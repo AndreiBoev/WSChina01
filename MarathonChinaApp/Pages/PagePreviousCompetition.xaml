@@ -1,0 +1,36 @@
+﻿<Page x:Class="MarathonChinaApp.Pages.PagePreviousCompetition"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MarathonChinaApp.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Previous  Competition" Tag="Unauth">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <StackPanel>
+                <TextBlock Text="Previous Competition" Style="{StaticResource FontHeader}" HorizontalAlignment="Center" FontSize="30"></TextBlock>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock Text="Ordinal No. :" Style="{StaticResource FontBase}" FontSize="18"></TextBlock>
+                    <TextBox></TextBox>
+                    <TextBlock Text="City or Country:" Style="{StaticResource FontBase}" FontSize="18"></TextBlock>
+                    <TextBox></TextBox>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+        <DataGrid Name="DGrid" Grid.Row="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Ordinal No." Binding="{Binding Id}" Width="auto"></DataGridTextColumn>
+                <DataGridTextColumn Header="Year" Binding="{Binding Year}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="City, Country" Binding="{Binding CityAndCountry}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="MemberNumber" Binding="{Binding Quantity}" Width="*"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

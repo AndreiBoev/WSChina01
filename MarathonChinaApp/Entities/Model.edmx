@@ -1,0 +1,1427 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="WSChina2020BaseComp01Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BlockSkills">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Championship">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CityId" Type="int" Nullable="false" />
+          <Property Name="Year" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CountryId" Type="int" Nullable="false" />
+          <Property Name="ZipCode" Type="int" />
+        </EntityType>
+        <EntityType Name="Competition">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="BlockSkillsId" Type="int" />
+        </EntityType>
+        <EntityType Name="CompetitionOfChampionship">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="CompetitionId" Type="int" Nullable="false" />
+          <Property Name="ChampionshipId" Type="int" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="MarathonId" Type="int" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InfrastructureList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Photo" Type="varbinary(max)" />
+          <Property Name="CompetitionId" Type="int" />
+        </EntityType>
+        <EntityType Name="Module">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ModuleOfCompetition">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="CompetitionOfChampionshipId" Type="int" />
+          <Property Name="ModuleId" Type="int" />
+        </EntityType>
+        <EntityType Name="PhotoCompetition">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Photo" Type="varbinary(max)" />
+          <Property Name="CompetitionId" Type="int" />
+        </EntityType>
+        <EntityType Name="PreviousCompetitions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="Year" Type="int" Nullable="false" />
+          <Property Name="CityId" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Registration">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CompetitionOfChampionshipId" Type="int" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ScheduleCompetition">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="TimeStart" Type="datetime" />
+          <Property Name="TimeEnd" Type="datetime" />
+          <Property Name="CompetitionId" Type="int" />
+        </EntityType>
+        <EntityType Name="Score">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RegistrationId" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="float" Nullable="false" />
+          <Property Name="ModuleOfCompetitionId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="IdNumber" />
+          </Key>
+          <Property Name="IdNumber" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="GenderId" Type="int" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="50" />
+          <Property Name="Photo" Type="varbinary(max)" />
+          <Property Name="CityId" Type="int" />
+          <Property Name="DateOfBirth" Type="date" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Organization" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Volunteer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="GenderId" Type="int" Nullable="false" />
+          <Property Name="OccupationCityId" Type="int" Nullable="false" />
+          <Property Name="ProvinceCityId" Type="int" Nullable="false" />
+          <Property Name="CompetitionOfChampionshipId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_City_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="City" Type="Self.City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Competition_BlockSkills">
+          <End Role="BlockSkills" Type="Self.BlockSkills" Multiplicity="0..1" />
+          <End Role="Competition" Type="Self.Competition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BlockSkills">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Competition">
+              <PropertyRef Name="BlockSkillsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompetitionOfChampionship_Championship">
+          <End Role="Championship" Type="Self.Championship" Multiplicity="0..1" />
+          <End Role="CompetitionOfChampionship" Type="Self.CompetitionOfChampionship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Championship">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CompetitionOfChampionship">
+              <PropertyRef Name="ChampionshipId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompetitionOfChampionship_Competition">
+          <End Role="Competition" Type="Self.Competition" Multiplicity="1" />
+          <End Role="CompetitionOfChampionship" Type="Self.CompetitionOfChampionship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Competition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CompetitionOfChampionship">
+              <PropertyRef Name="CompetitionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Event_Marathon">
+          <End Role="Championship" Type="Self.Championship" Multiplicity="0..1" />
+          <End Role="Event" Type="Self.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Championship">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="MarathonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InfrastructureList_Competition">
+          <End Role="Competition" Type="Self.Competition" Multiplicity="0..1" />
+          <End Role="InfrastructureList" Type="Self.InfrastructureList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Competition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="InfrastructureList">
+              <PropertyRef Name="CompetitionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Marathon_City">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
+          <End Role="Championship" Type="Self.Championship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Championship">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ModuleOfCompetition_CompetitionOfChampionship">
+          <End Role="CompetitionOfChampionship" Type="Self.CompetitionOfChampionship" Multiplicity="0..1" />
+          <End Role="ModuleOfCompetition" Type="Self.ModuleOfCompetition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompetitionOfChampionship">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ModuleOfCompetition">
+              <PropertyRef Name="CompetitionOfChampionshipId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ModuleOfCompetition_Module">
+          <End Role="Module" Type="Self.Module" Multiplicity="0..1" />
+          <End Role="ModuleOfCompetition" Type="Self.ModuleOfCompetition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Module">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ModuleOfCompetition">
+              <PropertyRef Name="ModuleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PhotoCompetition_Competition">
+          <End Role="Competition" Type="Self.Competition" Multiplicity="0..1" />
+          <End Role="PhotoCompetition" Type="Self.PhotoCompetition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Competition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PhotoCompetition">
+              <PropertyRef Name="CompetitionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PreviousCompetitions_City">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
+          <End Role="PreviousCompetitions" Type="Self.PreviousCompetitions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PreviousCompetitions">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registration_CompetitionOfChampionship">
+          <End Role="CompetitionOfChampionship" Type="Self.CompetitionOfChampionship" Multiplicity="0..1" />
+          <End Role="Registration" Type="Self.Registration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompetitionOfChampionship">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Registration">
+              <PropertyRef Name="CompetitionOfChampionshipId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RegistrationEvent_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Registration" Type="Self.Registration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="IdNumber" />
+            </Principal>
+            <Dependent Role="Registration">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ScheduleCompetition_Competition">
+          <End Role="Competition" Type="Self.Competition" Multiplicity="0..1" />
+          <End Role="ScheduleCompetition" Type="Self.ScheduleCompetition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Competition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ScheduleCompetition">
+              <PropertyRef Name="CompetitionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Score_ModuleOfCompetition">
+          <End Role="ModuleOfCompetition" Type="Self.ModuleOfCompetition" Multiplicity="1" />
+          <End Role="Score" Type="Self.Score" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ModuleOfCompetition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Score">
+              <PropertyRef Name="ModuleOfCompetitionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Score_RegistrationEvent">
+          <End Role="Registration" Type="Self.Registration" Multiplicity="1" />
+          <End Role="Score" Type="Self.Score" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Registration">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Score">
+              <PropertyRef Name="RegistrationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_City">
+          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="GenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Volunteer_City">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
+          <End Role="Volunteer" Type="Self.Volunteer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Volunteer">
+              <PropertyRef Name="ProvinceCityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Volunteer_City1">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
+          <End Role="Volunteer" Type="Self.Volunteer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Volunteer">
+              <PropertyRef Name="OccupationCityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Volunteer_CompetitionOfChampionship">
+          <End Role="CompetitionOfChampionship" Type="Self.CompetitionOfChampionship" Multiplicity="1" />
+          <End Role="Volunteer" Type="Self.Volunteer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompetitionOfChampionship">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Volunteer">
+              <PropertyRef Name="CompetitionOfChampionshipId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Volunteer_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="Volunteer" Type="Self.Volunteer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Volunteer">
+              <PropertyRef Name="GenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WSChina2020BaseComp01ModelStoreContainer">
+          <EntitySet Name="BlockSkills" EntityType="Self.BlockSkills" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Championship" EntityType="Self.Championship" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Competition" EntityType="Self.Competition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CompetitionOfChampionship" EntityType="Self.CompetitionOfChampionship" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Event" EntityType="Self.Event" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InfrastructureList" EntityType="Self.InfrastructureList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Module" EntityType="Self.Module" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ModuleOfCompetition" EntityType="Self.ModuleOfCompetition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PhotoCompetition" EntityType="Self.PhotoCompetition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PreviousCompetitions" EntityType="Self.PreviousCompetitions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Registration" EntityType="Self.Registration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ScheduleCompetition" EntityType="Self.ScheduleCompetition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Score" EntityType="Self.Score" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Volunteer" EntityType="Self.Volunteer" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_City_Country" Association="Self.FK_City_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="City" EntitySet="City" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Competition_BlockSkills" Association="Self.FK_Competition_BlockSkills">
+            <End Role="BlockSkills" EntitySet="BlockSkills" />
+            <End Role="Competition" EntitySet="Competition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompetitionOfChampionship_Championship" Association="Self.FK_CompetitionOfChampionship_Championship">
+            <End Role="Championship" EntitySet="Championship" />
+            <End Role="CompetitionOfChampionship" EntitySet="CompetitionOfChampionship" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompetitionOfChampionship_Competition" Association="Self.FK_CompetitionOfChampionship_Competition">
+            <End Role="Competition" EntitySet="Competition" />
+            <End Role="CompetitionOfChampionship" EntitySet="CompetitionOfChampionship" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Event_Marathon" Association="Self.FK_Event_Marathon">
+            <End Role="Championship" EntitySet="Championship" />
+            <End Role="Event" EntitySet="Event" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InfrastructureList_Competition" Association="Self.FK_InfrastructureList_Competition">
+            <End Role="Competition" EntitySet="Competition" />
+            <End Role="InfrastructureList" EntitySet="InfrastructureList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Marathon_City" Association="Self.FK_Marathon_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="Championship" EntitySet="Championship" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ModuleOfCompetition_CompetitionOfChampionship" Association="Self.FK_ModuleOfCompetition_CompetitionOfChampionship">
+            <End Role="CompetitionOfChampionship" EntitySet="CompetitionOfChampionship" />
+            <End Role="ModuleOfCompetition" EntitySet="ModuleOfCompetition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ModuleOfCompetition_Module" Association="Self.FK_ModuleOfCompetition_Module">
+            <End Role="Module" EntitySet="Module" />
+            <End Role="ModuleOfCompetition" EntitySet="ModuleOfCompetition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhotoCompetition_Competition" Association="Self.FK_PhotoCompetition_Competition">
+            <End Role="Competition" EntitySet="Competition" />
+            <End Role="PhotoCompetition" EntitySet="PhotoCompetition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PreviousCompetitions_City" Association="Self.FK_PreviousCompetitions_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="PreviousCompetitions" EntitySet="PreviousCompetitions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registration_CompetitionOfChampionship" Association="Self.FK_Registration_CompetitionOfChampionship">
+            <End Role="CompetitionOfChampionship" EntitySet="CompetitionOfChampionship" />
+            <End Role="Registration" EntitySet="Registration" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RegistrationEvent_User" Association="Self.FK_RegistrationEvent_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Registration" EntitySet="Registration" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ScheduleCompetition_Competition" Association="Self.FK_ScheduleCompetition_Competition">
+            <End Role="Competition" EntitySet="Competition" />
+            <End Role="ScheduleCompetition" EntitySet="ScheduleCompetition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Score_ModuleOfCompetition" Association="Self.FK_Score_ModuleOfCompetition">
+            <End Role="ModuleOfCompetition" EntitySet="ModuleOfCompetition" />
+            <End Role="Score" EntitySet="Score" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Score_RegistrationEvent" Association="Self.FK_Score_RegistrationEvent">
+            <End Role="Registration" EntitySet="Registration" />
+            <End Role="Score" EntitySet="Score" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_City" Association="Self.FK_User_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Gender" Association="Self.FK_User_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Volunteer_City" Association="Self.FK_Volunteer_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="Volunteer" EntitySet="Volunteer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Volunteer_City1" Association="Self.FK_Volunteer_City1">
+            <End Role="City" EntitySet="City" />
+            <End Role="Volunteer" EntitySet="Volunteer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Volunteer_CompetitionOfChampionship" Association="Self.FK_Volunteer_CompetitionOfChampionship">
+            <End Role="CompetitionOfChampionship" EntitySet="CompetitionOfChampionship" />
+            <End Role="Volunteer" EntitySet="Volunteer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Volunteer_Gender" Association="Self.FK_Volunteer_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Volunteer" EntitySet="Volunteer" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WSChina2020BaseComp01Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="WSChina2020BaseComp01Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BlockSkills" EntityType="WSChina2020BaseComp01Model.BlockSkill" />
+          <EntitySet Name="Championships" EntityType="WSChina2020BaseComp01Model.Championship" />
+          <EntitySet Name="Cities" EntityType="WSChina2020BaseComp01Model.City" />
+          <EntitySet Name="Competitions" EntityType="WSChina2020BaseComp01Model.Competition" />
+          <EntitySet Name="CompetitionOfChampionships" EntityType="WSChina2020BaseComp01Model.CompetitionOfChampionship" />
+          <EntitySet Name="Countries" EntityType="WSChina2020BaseComp01Model.Country" />
+          <EntitySet Name="Events" EntityType="WSChina2020BaseComp01Model.Event" />
+          <EntitySet Name="Genders" EntityType="WSChina2020BaseComp01Model.Gender" />
+          <EntitySet Name="InfrastructureLists" EntityType="WSChina2020BaseComp01Model.InfrastructureList" />
+          <EntitySet Name="Modules" EntityType="WSChina2020BaseComp01Model.Module" />
+          <EntitySet Name="ModuleOfCompetitions" EntityType="WSChina2020BaseComp01Model.ModuleOfCompetition" />
+          <EntitySet Name="PhotoCompetitions" EntityType="WSChina2020BaseComp01Model.PhotoCompetition" />
+          <EntitySet Name="PreviousCompetitions" EntityType="WSChina2020BaseComp01Model.PreviousCompetition" />
+          <EntitySet Name="Registrations" EntityType="WSChina2020BaseComp01Model.Registration" />
+          <EntitySet Name="Roles" EntityType="WSChina2020BaseComp01Model.Role" />
+          <EntitySet Name="ScheduleCompetitions" EntityType="WSChina2020BaseComp01Model.ScheduleCompetition" />
+          <EntitySet Name="Scores" EntityType="WSChina2020BaseComp01Model.Score" />
+          <EntitySet Name="sysdiagrams" EntityType="WSChina2020BaseComp01Model.sysdiagram" />
+          <EntitySet Name="Users" EntityType="WSChina2020BaseComp01Model.User" />
+          <EntitySet Name="Volunteers" EntityType="WSChina2020BaseComp01Model.Volunteer" />
+          <AssociationSet Name="FK_Competition_BlockSkills" Association="WSChina2020BaseComp01Model.FK_Competition_BlockSkills">
+            <End Role="BlockSkill" EntitySet="BlockSkills" />
+            <End Role="Competition" EntitySet="Competitions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompetitionOfChampionship_Championship" Association="WSChina2020BaseComp01Model.FK_CompetitionOfChampionship_Championship">
+            <End Role="Championship" EntitySet="Championships" />
+            <End Role="CompetitionOfChampionship" EntitySet="CompetitionOfChampionships" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Event_Marathon" Association="WSChina2020BaseComp01Model.FK_Event_Marathon">
+            <End Role="Championship" EntitySet="Championships" />
+            <End Role="Event" EntitySet="Events" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Marathon_City" Association="WSChina2020BaseComp01Model.FK_Marathon_City">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="Championship" EntitySet="Championships" />
+          </AssociationSet>
+          <AssociationSet Name="FK_City_Country" Association="WSChina2020BaseComp01Model.FK_City_Country">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="City" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PreviousCompetitions_City" Association="WSChina2020BaseComp01Model.FK_PreviousCompetitions_City">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="PreviousCompetition" EntitySet="PreviousCompetitions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_City" Association="WSChina2020BaseComp01Model.FK_User_City">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Volunteer_City" Association="WSChina2020BaseComp01Model.FK_Volunteer_City">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="Volunteer" EntitySet="Volunteers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Volunteer_City1" Association="WSChina2020BaseComp01Model.FK_Volunteer_City1">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="Volunteer" EntitySet="Volunteers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompetitionOfChampionship_Competition" Association="WSChina2020BaseComp01Model.FK_CompetitionOfChampionship_Competition">
+            <End Role="Competition" EntitySet="Competitions" />
+            <End Role="CompetitionOfChampionship" EntitySet="CompetitionOfChampionships" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InfrastructureList_Competition" Association="WSChina2020BaseComp01Model.FK_InfrastructureList_Competition">
+            <End Role="Competition" EntitySet="Competitions" />
+            <End Role="InfrastructureList" EntitySet="InfrastructureLists" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhotoCompetition_Competition" Association="WSChina2020BaseComp01Model.FK_PhotoCompetition_Competition">
+            <End Role="Competition" EntitySet="Competitions" />
+            <End Role="PhotoCompetition" EntitySet="PhotoCompetitions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ScheduleCompetition_Competition" Association="WSChina2020BaseComp01Model.FK_ScheduleCompetition_Competition">
+            <End Role="Competition" EntitySet="Competitions" />
+            <End Role="ScheduleCompetition" EntitySet="ScheduleCompetitions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ModuleOfCompetition_CompetitionOfChampionship" Association="WSChina2020BaseComp01Model.FK_ModuleOfCompetition_CompetitionOfChampionship">
+            <End Role="CompetitionOfChampionship" EntitySet="CompetitionOfChampionships" />
+            <End Role="ModuleOfCompetition" EntitySet="ModuleOfCompetitions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registration_CompetitionOfChampionship" Association="WSChina2020BaseComp01Model.FK_Registration_CompetitionOfChampionship">
+            <End Role="CompetitionOfChampionship" EntitySet="CompetitionOfChampionships" />
+            <End Role="Registration" EntitySet="Registrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Volunteer_CompetitionOfChampionship" Association="WSChina2020BaseComp01Model.FK_Volunteer_CompetitionOfChampionship">
+            <End Role="CompetitionOfChampionship" EntitySet="CompetitionOfChampionships" />
+            <End Role="Volunteer" EntitySet="Volunteers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Gender" Association="WSChina2020BaseComp01Model.FK_User_Gender">
+            <End Role="Gender" EntitySet="Genders" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Volunteer_Gender" Association="WSChina2020BaseComp01Model.FK_Volunteer_Gender">
+            <End Role="Gender" EntitySet="Genders" />
+            <End Role="Volunteer" EntitySet="Volunteers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ModuleOfCompetition_Module" Association="WSChina2020BaseComp01Model.FK_ModuleOfCompetition_Module">
+            <End Role="Module" EntitySet="Modules" />
+            <End Role="ModuleOfCompetition" EntitySet="ModuleOfCompetitions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Score_ModuleOfCompetition" Association="WSChina2020BaseComp01Model.FK_Score_ModuleOfCompetition">
+            <End Role="ModuleOfCompetition" EntitySet="ModuleOfCompetitions" />
+            <End Role="Score" EntitySet="Scores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RegistrationEvent_User" Association="WSChina2020BaseComp01Model.FK_RegistrationEvent_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Registration" EntitySet="Registrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Score_RegistrationEvent" Association="WSChina2020BaseComp01Model.FK_Score_RegistrationEvent">
+            <End Role="Registration" EntitySet="Registrations" />
+            <End Role="Score" EntitySet="Scores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="WSChina2020BaseComp01Model.FK_User_Role">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="BlockSkill">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Competitions" Relationship="WSChina2020BaseComp01Model.FK_Competition_BlockSkills" FromRole="BlockSkill" ToRole="Competition" />
+        </EntityType>
+        <EntityType Name="Championship">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CityId" Type="Int32" Nullable="false" />
+          <Property Name="Year" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CompetitionOfChampionships" Relationship="WSChina2020BaseComp01Model.FK_CompetitionOfChampionship_Championship" FromRole="Championship" ToRole="CompetitionOfChampionship" />
+          <NavigationProperty Name="Events" Relationship="WSChina2020BaseComp01Model.FK_Event_Marathon" FromRole="Championship" ToRole="Event" />
+          <NavigationProperty Name="City" Relationship="WSChina2020BaseComp01Model.FK_Marathon_City" FromRole="Championship" ToRole="City" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CountryId" Type="Int32" Nullable="false" />
+          <Property Name="ZipCode" Type="Int32" />
+          <NavigationProperty Name="Championships" Relationship="WSChina2020BaseComp01Model.FK_Marathon_City" FromRole="City" ToRole="Championship" />
+          <NavigationProperty Name="Country" Relationship="WSChina2020BaseComp01Model.FK_City_Country" FromRole="City" ToRole="Country" />
+          <NavigationProperty Name="PreviousCompetitions" Relationship="WSChina2020BaseComp01Model.FK_PreviousCompetitions_City" FromRole="City" ToRole="PreviousCompetition" />
+          <NavigationProperty Name="Users" Relationship="WSChina2020BaseComp01Model.FK_User_City" FromRole="City" ToRole="User" />
+          <NavigationProperty Name="Volunteers" Relationship="WSChina2020BaseComp01Model.FK_Volunteer_City" FromRole="City" ToRole="Volunteer" />
+          <NavigationProperty Name="Volunteers1" Relationship="WSChina2020BaseComp01Model.FK_Volunteer_City1" FromRole="City" ToRole="Volunteer" />
+        </EntityType>
+        <EntityType Name="Competition">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BlockSkillsId" Type="Int32" />
+          <NavigationProperty Name="BlockSkill" Relationship="WSChina2020BaseComp01Model.FK_Competition_BlockSkills" FromRole="Competition" ToRole="BlockSkill" />
+          <NavigationProperty Name="CompetitionOfChampionships" Relationship="WSChina2020BaseComp01Model.FK_CompetitionOfChampionship_Competition" FromRole="Competition" ToRole="CompetitionOfChampionship" />
+          <NavigationProperty Name="InfrastructureLists" Relationship="WSChina2020BaseComp01Model.FK_InfrastructureList_Competition" FromRole="Competition" ToRole="InfrastructureList" />
+          <NavigationProperty Name="PhotoCompetitions" Relationship="WSChina2020BaseComp01Model.FK_PhotoCompetition_Competition" FromRole="Competition" ToRole="PhotoCompetition" />
+          <NavigationProperty Name="ScheduleCompetitions" Relationship="WSChina2020BaseComp01Model.FK_ScheduleCompetition_Competition" FromRole="Competition" ToRole="ScheduleCompetition" />
+        </EntityType>
+        <EntityType Name="CompetitionOfChampionship">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="CompetitionId" Type="Int32" Nullable="false" />
+          <Property Name="ChampionshipId" Type="Int32" />
+          <NavigationProperty Name="Championship" Relationship="WSChina2020BaseComp01Model.FK_CompetitionOfChampionship_Championship" FromRole="CompetitionOfChampionship" ToRole="Championship" />
+          <NavigationProperty Name="Competition" Relationship="WSChina2020BaseComp01Model.FK_CompetitionOfChampionship_Competition" FromRole="CompetitionOfChampionship" ToRole="Competition" />
+          <NavigationProperty Name="ModuleOfCompetitions" Relationship="WSChina2020BaseComp01Model.FK_ModuleOfCompetition_CompetitionOfChampionship" FromRole="CompetitionOfChampionship" ToRole="ModuleOfCompetition" />
+          <NavigationProperty Name="Registrations" Relationship="WSChina2020BaseComp01Model.FK_Registration_CompetitionOfChampionship" FromRole="CompetitionOfChampionship" ToRole="Registration" />
+          <NavigationProperty Name="Volunteers" Relationship="WSChina2020BaseComp01Model.FK_Volunteer_CompetitionOfChampionship" FromRole="CompetitionOfChampionship" ToRole="Volunteer" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Code" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Cities" Relationship="WSChina2020BaseComp01Model.FK_City_Country" FromRole="Country" ToRole="City" />
+        </EntityType>
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MarathonId" Type="Int32" />
+          <NavigationProperty Name="Championship" Relationship="WSChina2020BaseComp01Model.FK_Event_Marathon" FromRole="Event" ToRole="Championship" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Users" Relationship="WSChina2020BaseComp01Model.FK_User_Gender" FromRole="Gender" ToRole="User" />
+          <NavigationProperty Name="Volunteers" Relationship="WSChina2020BaseComp01Model.FK_Volunteer_Gender" FromRole="Gender" ToRole="Volunteer" />
+        </EntityType>
+        <EntityType Name="InfrastructureList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="CompetitionId" Type="Int32" />
+          <NavigationProperty Name="Competition" Relationship="WSChina2020BaseComp01Model.FK_InfrastructureList_Competition" FromRole="InfrastructureList" ToRole="Competition" />
+        </EntityType>
+        <EntityType Name="Module">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ModuleOfCompetitions" Relationship="WSChina2020BaseComp01Model.FK_ModuleOfCompetition_Module" FromRole="Module" ToRole="ModuleOfCompetition" />
+        </EntityType>
+        <EntityType Name="ModuleOfCompetition">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="CompetitionOfChampionshipId" Type="Int32" />
+          <Property Name="ModuleId" Type="Int32" />
+          <NavigationProperty Name="CompetitionOfChampionship" Relationship="WSChina2020BaseComp01Model.FK_ModuleOfCompetition_CompetitionOfChampionship" FromRole="ModuleOfCompetition" ToRole="CompetitionOfChampionship" />
+          <NavigationProperty Name="Module" Relationship="WSChina2020BaseComp01Model.FK_ModuleOfCompetition_Module" FromRole="ModuleOfCompetition" ToRole="Module" />
+          <NavigationProperty Name="Scores" Relationship="WSChina2020BaseComp01Model.FK_Score_ModuleOfCompetition" FromRole="ModuleOfCompetition" ToRole="Score" />
+        </EntityType>
+        <EntityType Name="PhotoCompetition">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="CompetitionId" Type="Int32" />
+          <NavigationProperty Name="Competition" Relationship="WSChina2020BaseComp01Model.FK_PhotoCompetition_Competition" FromRole="PhotoCompetition" ToRole="Competition" />
+        </EntityType>
+        <EntityType Name="PreviousCompetition">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="Year" Type="Int32" Nullable="false" />
+          <Property Name="CityId" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="City" Relationship="WSChina2020BaseComp01Model.FK_PreviousCompetitions_City" FromRole="PreviousCompetition" ToRole="City" />
+        </EntityType>
+        <EntityType Name="Registration">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CompetitionOfChampionshipId" Type="Int32" />
+          <NavigationProperty Name="CompetitionOfChampionship" Relationship="WSChina2020BaseComp01Model.FK_Registration_CompetitionOfChampionship" FromRole="Registration" ToRole="CompetitionOfChampionship" />
+          <NavigationProperty Name="User" Relationship="WSChina2020BaseComp01Model.FK_RegistrationEvent_User" FromRole="Registration" ToRole="User" />
+          <NavigationProperty Name="Scores" Relationship="WSChina2020BaseComp01Model.FK_Score_RegistrationEvent" FromRole="Registration" ToRole="Score" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Users" Relationship="WSChina2020BaseComp01Model.FK_User_Role" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <EntityType Name="ScheduleCompetition">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TimeStart" Type="DateTime" Precision="3" />
+          <Property Name="TimeEnd" Type="DateTime" Precision="3" />
+          <Property Name="CompetitionId" Type="Int32" />
+          <NavigationProperty Name="Competition" Relationship="WSChina2020BaseComp01Model.FK_ScheduleCompetition_Competition" FromRole="ScheduleCompetition" ToRole="Competition" />
+        </EntityType>
+        <EntityType Name="Score">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RegistrationId" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Double" Nullable="false" />
+          <Property Name="ModuleOfCompetitionId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ModuleOfCompetition" Relationship="WSChina2020BaseComp01Model.FK_Score_ModuleOfCompetition" FromRole="Score" ToRole="ModuleOfCompetition" />
+          <NavigationProperty Name="Registration" Relationship="WSChina2020BaseComp01Model.FK_Score_RegistrationEvent" FromRole="Score" ToRole="Registration" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="IdNumber" />
+          </Key>
+          <Property Name="IdNumber" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="GenderId" Type="Int32" Nullable="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="CityId" Type="Int32" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Organization" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="City" Relationship="WSChina2020BaseComp01Model.FK_User_City" FromRole="User" ToRole="City" />
+          <NavigationProperty Name="Gender" Relationship="WSChina2020BaseComp01Model.FK_User_Gender" FromRole="User" ToRole="Gender" />
+          <NavigationProperty Name="Registrations" Relationship="WSChina2020BaseComp01Model.FK_RegistrationEvent_User" FromRole="User" ToRole="Registration" />
+          <NavigationProperty Name="Role" Relationship="WSChina2020BaseComp01Model.FK_User_Role" FromRole="User" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="Volunteer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GenderId" Type="Int32" Nullable="false" />
+          <Property Name="OccupationCityId" Type="Int32" Nullable="false" />
+          <Property Name="ProvinceCityId" Type="Int32" Nullable="false" />
+          <Property Name="CompetitionOfChampionshipId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="City" Relationship="WSChina2020BaseComp01Model.FK_Volunteer_City" FromRole="Volunteer" ToRole="City" />
+          <NavigationProperty Name="City1" Relationship="WSChina2020BaseComp01Model.FK_Volunteer_City1" FromRole="Volunteer" ToRole="City" />
+          <NavigationProperty Name="CompetitionOfChampionship" Relationship="WSChina2020BaseComp01Model.FK_Volunteer_CompetitionOfChampionship" FromRole="Volunteer" ToRole="CompetitionOfChampionship" />
+          <NavigationProperty Name="Gender" Relationship="WSChina2020BaseComp01Model.FK_Volunteer_Gender" FromRole="Volunteer" ToRole="Gender" />
+        </EntityType>
+        <Association Name="FK_Competition_BlockSkills">
+          <End Type="WSChina2020BaseComp01Model.BlockSkill" Role="BlockSkill" Multiplicity="0..1" />
+          <End Type="WSChina2020BaseComp01Model.Competition" Role="Competition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BlockSkill">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Competition">
+              <PropertyRef Name="BlockSkillsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompetitionOfChampionship_Championship">
+          <End Type="WSChina2020BaseComp01Model.Championship" Role="Championship" Multiplicity="0..1" />
+          <End Type="WSChina2020BaseComp01Model.CompetitionOfChampionship" Role="CompetitionOfChampionship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Championship">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CompetitionOfChampionship">
+              <PropertyRef Name="ChampionshipId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Event_Marathon">
+          <End Type="WSChina2020BaseComp01Model.Championship" Role="Championship" Multiplicity="0..1" />
+          <End Type="WSChina2020BaseComp01Model.Event" Role="Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Championship">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="MarathonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Marathon_City">
+          <End Type="WSChina2020BaseComp01Model.City" Role="City" Multiplicity="1" />
+          <End Type="WSChina2020BaseComp01Model.Championship" Role="Championship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Championship">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_City_Country">
+          <End Type="WSChina2020BaseComp01Model.Country" Role="Country" Multiplicity="1" />
+          <End Type="WSChina2020BaseComp01Model.City" Role="City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PreviousCompetitions_City">
+          <End Type="WSChina2020BaseComp01Model.City" Role="City" Multiplicity="1" />
+          <End Type="WSChina2020BaseComp01Model.PreviousCompetition" Role="PreviousCompetition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PreviousCompetition">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_City">
+          <End Type="WSChina2020BaseComp01Model.City" Role="City" Multiplicity="0..1" />
+          <End Type="WSChina2020BaseComp01Model.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Volunteer_City">
+          <End Type="WSChina2020BaseComp01Model.City" Role="City" Multiplicity="1" />
+          <End Type="WSChina2020BaseComp01Model.Volunteer" Role="Volunteer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Volunteer">
+              <PropertyRef Name="ProvinceCityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Volunteer_City1">
+          <End Type="WSChina2020BaseComp01Model.City" Role="City" Multiplicity="1" />
+          <End Type="WSChina2020BaseComp01Model.Volunteer" Role="Volunteer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Volunteer">
+              <PropertyRef Name="OccupationCityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompetitionOfChampionship_Competition">
+          <End Type="WSChina2020BaseComp01Model.Competition" Role="Competition" Multiplicity="1" />
+          <End Type="WSChina2020BaseComp01Model.CompetitionOfChampionship" Role="CompetitionOfChampionship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Competition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CompetitionOfChampionship">
+              <PropertyRef Name="CompetitionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InfrastructureList_Competition">
+          <End Type="WSChina2020BaseComp01Model.Competition" Role="Competition" Multiplicity="0..1" />
+          <End Type="WSChina2020BaseComp01Model.InfrastructureList" Role="InfrastructureList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Competition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="InfrastructureList">
+              <PropertyRef Name="CompetitionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PhotoCompetition_Competition">
+          <End Type="WSChina2020BaseComp01Model.Competition" Role="Competition" Multiplicity="0..1" />
+          <End Type="WSChina2020BaseComp01Model.PhotoCompetition" Role="PhotoCompetition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Competition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PhotoCompetition">
+              <PropertyRef Name="CompetitionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ScheduleCompetition_Competition">
+          <End Type="WSChina2020BaseComp01Model.Competition" Role="Competition" Multiplicity="0..1" />
+          <End Type="WSChina2020BaseComp01Model.ScheduleCompetition" Role="ScheduleCompetition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Competition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ScheduleCompetition">
+              <PropertyRef Name="CompetitionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ModuleOfCompetition_CompetitionOfChampionship">
+          <End Type="WSChina2020BaseComp01Model.CompetitionOfChampionship" Role="CompetitionOfChampionship" Multiplicity="0..1" />
+          <End Type="WSChina2020BaseComp01Model.ModuleOfCompetition" Role="ModuleOfCompetition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompetitionOfChampionship">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ModuleOfCompetition">
+              <PropertyRef Name="CompetitionOfChampionshipId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registration_CompetitionOfChampionship">
+          <End Type="WSChina2020BaseComp01Model.CompetitionOfChampionship" Role="CompetitionOfChampionship" Multiplicity="0..1" />
+          <End Type="WSChina2020BaseComp01Model.Registration" Role="Registration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompetitionOfChampionship">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Registration">
+              <PropertyRef Name="CompetitionOfChampionshipId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Volunteer_CompetitionOfChampionship">
+          <End Type="WSChina2020BaseComp01Model.CompetitionOfChampionship" Role="CompetitionOfChampionship" Multiplicity="1" />
+          <End Type="WSChina2020BaseComp01Model.Volunteer" Role="Volunteer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompetitionOfChampionship">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Volunteer">
+              <PropertyRef Name="CompetitionOfChampionshipId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Gender">
+          <End Type="WSChina2020BaseComp01Model.Gender" Role="Gender" Multiplicity="1" />
+          <End Type="WSChina2020BaseComp01Model.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="GenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Volunteer_Gender">
+          <End Type="WSChina2020BaseComp01Model.Gender" Role="Gender" Multiplicity="1" />
+          <End Type="WSChina2020BaseComp01Model.Volunteer" Role="Volunteer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Volunteer">
+              <PropertyRef Name="GenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ModuleOfCompetition_Module">
+          <End Type="WSChina2020BaseComp01Model.Module" Role="Module" Multiplicity="0..1" />
+          <End Type="WSChina2020BaseComp01Model.ModuleOfCompetition" Role="ModuleOfCompetition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Module">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ModuleOfCompetition">
+              <PropertyRef Name="ModuleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Score_ModuleOfCompetition">
+          <End Type="WSChina2020BaseComp01Model.ModuleOfCompetition" Role="ModuleOfCompetition" Multiplicity="1" />
+          <End Type="WSChina2020BaseComp01Model.Score" Role="Score" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ModuleOfCompetition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Score">
+              <PropertyRef Name="ModuleOfCompetitionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RegistrationEvent_User">
+          <End Type="WSChina2020BaseComp01Model.User" Role="User" Multiplicity="1" />
+          <End Type="WSChina2020BaseComp01Model.Registration" Role="Registration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="IdNumber" />
+            </Principal>
+            <Dependent Role="Registration">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Score_RegistrationEvent">
+          <End Type="WSChina2020BaseComp01Model.Registration" Role="Registration" Multiplicity="1" />
+          <End Type="WSChina2020BaseComp01Model.Score" Role="Score" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Registration">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Score">
+              <PropertyRef Name="RegistrationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Type="WSChina2020BaseComp01Model.Role" Role="Role" Multiplicity="1" />
+          <End Type="WSChina2020BaseComp01Model.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WSChina2020BaseComp01ModelStoreContainer" CdmEntityContainer="WSChina2020BaseComp01Entities">
+          <EntitySetMapping Name="BlockSkills">
+            <EntityTypeMapping TypeName="WSChina2020BaseComp01Model.BlockSkill">
+              <MappingFragment StoreEntitySet="BlockSkills">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Championships">
+            <EntityTypeMapping TypeName="WSChina2020BaseComp01Model.Championship">
+              <MappingFragment StoreEntitySet="Championship">
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cities">
+            <EntityTypeMapping TypeName="WSChina2020BaseComp01Model.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Competitions">
+            <EntityTypeMapping TypeName="WSChina2020BaseComp01Model.Competition">
+              <MappingFragment StoreEntitySet="Competition">
+                <ScalarProperty Name="BlockSkillsId" ColumnName="BlockSkillsId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompetitionOfChampionships">
+            <EntityTypeMapping TypeName="WSChina2020BaseComp01Model.CompetitionOfChampionship">
+              <MappingFragment StoreEntitySet="CompetitionOfChampionship">
+                <ScalarProperty Name="ChampionshipId" ColumnName="ChampionshipId" />
+                <ScalarProperty Name="CompetitionId" ColumnName="CompetitionId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="WSChina2020BaseComp01Model.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Events">
+            <EntityTypeMapping TypeName="WSChina2020BaseComp01Model.Event">
+              <MappingFragment StoreEntitySet="Event">
+                <ScalarProperty Name="MarathonId" ColumnName="MarathonId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Genders">
+            <EntityTypeMapping TypeName="WSChina2020BaseComp01Model.Gender">
+              <MappingFragment StoreEntitySet="Gender">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InfrastructureLists">
+            <EntityTypeMapping TypeName="WSChina2020BaseComp01Model.InfrastructureList">
+              <MappingFragment StoreEntitySet="InfrastructureList">
+                <ScalarProperty Name="CompetitionId" ColumnName="CompetitionId" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Modules">
+            <EntityTypeMapping TypeName="WSChina2020BaseComp01Model.Module">
+              <MappingFragment StoreEntitySet="Module">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ModuleOfCompetitions">
+            <EntityTypeMapping TypeName="WSChina2020BaseComp01Model.ModuleOfCompetition">
+              <MappingFragment StoreEntitySet="ModuleOfCompetition">
+                <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
+                <ScalarProperty Name="CompetitionOfChampionshipId" ColumnName="CompetitionOfChampionshipId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PhotoCompetitions">
+            <EntityTypeMapping TypeName="WSChina2020BaseComp01Model.PhotoCompetition">
+              <MappingFragment StoreEntitySet="PhotoCompetition">
+                <ScalarProperty Name="CompetitionId" ColumnName="CompetitionId" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PreviousCompetitions">
+            <EntityTypeMapping TypeName="WSChina2020BaseComp01Model.PreviousCompetition">
+              <MappingFragment StoreEntitySet="PreviousCompetitions">
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Registrations">
+            <EntityTypeMapping TypeName="WSChina2020BaseComp01Model.Registration">
+              <MappingFragment StoreEntitySet="Registration">
+                <ScalarProperty Name="CompetitionOfChampionshipId" ColumnName="CompetitionOfChampionshipId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="WSChina2020BaseComp01Model.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ScheduleCompetitions">
+            <EntityTypeMapping TypeName="WSChina2020BaseComp01Model.ScheduleCompetition">
+              <MappingFragment StoreEntitySet="ScheduleCompetition">
+                <ScalarProperty Name="CompetitionId" ColumnName="CompetitionId" />
+                <ScalarProperty Name="TimeEnd" ColumnName="TimeEnd" />
+                <ScalarProperty Name="TimeStart" ColumnName="TimeStart" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Scores">
+            <EntityTypeMapping TypeName="WSChina2020BaseComp01Model.Score">
+              <MappingFragment StoreEntitySet="Score">
+                <ScalarProperty Name="ModuleOfCompetitionId" ColumnName="ModuleOfCompetitionId" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="RegistrationId" ColumnName="RegistrationId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="WSChina2020BaseComp01Model.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="WSChina2020BaseComp01Model.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Organization" ColumnName="Organization" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="GenderId" ColumnName="GenderId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IdNumber" ColumnName="IdNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Volunteers">
+            <EntityTypeMapping TypeName="WSChina2020BaseComp01Model.Volunteer">
+              <MappingFragment StoreEntitySet="Volunteer">
+                <ScalarProperty Name="CompetitionOfChampionshipId" ColumnName="CompetitionOfChampionshipId" />
+                <ScalarProperty Name="ProvinceCityId" ColumnName="ProvinceCityId" />
+                <ScalarProperty Name="OccupationCityId" ColumnName="OccupationCityId" />
+                <ScalarProperty Name="GenderId" ColumnName="GenderId" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

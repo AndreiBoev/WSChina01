@@ -1,0 +1,42 @@
+﻿<Window x:Class="MarathonChinaApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MarathonChinaApp"
+        mc:Ignorable="d"
+        Title="{Binding ElementName=MainFrame, Path=Content.Title, StringFormat={} Slills Competition Management System {0}}" 
+        Height="700" Width="1000"
+        MinHeight="500" MinWidth="800"
+        Icon="Assets/Logo.png">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="35"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="#FF6995C2" Name="GridLarge">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Image Source="Assets/Logo.png" Height="200"/>
+                <StackPanel>
+                    <TextBlock Text="Skills Competition" Foreground="White" FontSize="60" HorizontalAlignment="Center" Style="{StaticResource FontHeader}" Margin="5 5 0 0"></TextBlock>
+                    <TextBlock Text="Management System 2016" Foreground="White" FontSize="60" TextWrapping="Wrap" HorizontalAlignment="Center" Style="{StaticResource FontHeader}"></TextBlock>
+                    <TextBlock Text="Chang Hai, Chaina" HorizontalAlignment="Center" Style="{StaticResource FontBase}" FontSize="20"></TextBlock>
+                    <TextBlock Text="Saturday August 13 2016" HorizontalAlignment="Center" Style="{StaticResource FontBase}" FontSize="20" Name="TBDate"></TextBlock>
+            </StackPanel>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="0" Background="#FF6995C2" Height="50" Name="GridLittle" VerticalAlignment="Top">
+            <StackPanel Orientation="Horizontal">
+             <Image Source="Assets/Logo.png" HorizontalAlignment="Left" Height="40"/>
+            <Button Style="{StaticResource BtnBase}" Width="60" Content="Back" Name="BtnBack" Click="BtnBack_Click"></Button>
+            <TextBlock Style="{StaticResource FontHeader}" Text="WorldSkills China Competition 2016" Foreground="White" FontSize="30"></TextBlock>
+            </StackPanel>
+            <Button HorizontalAlignment="Right" Style="{StaticResource BtnBase}" Content="Logout" Width="100" Height="30" Name="BtnLogout" Click="BtnLogout_Click"></Button>
+        </Grid>
+        <Grid Grid.Row="2" Background="#FF6995C2">
+            <TextBlock Text="? days, ? hours, ? minutes and ? seconds until the WorldSkills Shanghai 2021 starts." Style="{StaticResource FontBase}" HorizontalAlignment="Center" FontSize="20" Name="TBCount"></TextBlock>
+        </Grid>
+        <Frame Name="MainFrame" ContentRendered="MainFrame_ContentRendered" NavigationUIVisibility="Hidden" Grid.Row="1"></Frame>
+    </Grid>
+</Window>

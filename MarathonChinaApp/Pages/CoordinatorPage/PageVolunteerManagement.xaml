@@ -1,0 +1,62 @@
+﻿<Page x:Class="MarathonChinaApp.Pages.CoordinatorPage.PageVolunteerManagement"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MarathonChinaApp.Pages.CoordinatorPage"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Volunteer Management">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" HorizontalAlignment="Center">
+            <TextBlock Style="{StaticResource FontHeader}" Text="Volunteer Management"></TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Style="{StaticResource FontBase}" Width="120" TextAlignment="Right" Text="Skills of Service:"></TextBlock>
+                        <ComboBox Width="120" Name="CBSkills" DisplayMemberPath="CodeAndNameCompetition"></ComboBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Style="{StaticResource FontBase}" Width="120" TextAlignment="Right" Text="Sort By:"></TextBlock>
+                        <ComboBox Width="120" Name="CBIdNumber"></ComboBox>
+                    </StackPanel>
+                    <Button Style="{StaticResource BtnBase}" Width="100" Content="Search" HorizontalAlignment="Right" Name="BtnSearch" Click="BtnSearch_Click"></Button>
+                </StackPanel>
+                <StackPanel Margin="100 5 5 5" VerticalAlignment="Top">
+                    <Button Style="{StaticResource BtnBase}" Content="Import volunteers" Width="200" Name="BtnImport" Click="BtnImport_Click"></Button>
+                    <Button Style="{StaticResource BtnBase}" Width="200" Height="40" Name="BtnAdjustVolunteers" TextBlock.FontSize="16"></Button>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Style="{StaticResource FontBase}" Text="Total Volounteers:" FontWeight="Bold"></TextBlock>
+                <TextBlock Style="{StaticResource FontBase}" Text="XX" Name="TBCount" FontWeight="Bold"></TextBlock>
+            </StackPanel>
+        </StackPanel>
+        <DataGrid Grid.Row="1" Name="DGVolunteers">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="IdNumber" Width="*" Binding="{Binding Id}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Name" Width="*" Binding="{Binding FullName}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Gender" Width="*" Binding="{Binding Gender.Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Occupation" Width="*" Binding="{Binding CityAndCountry}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Province" Width="*" Binding="{Binding CityAndCountry}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Skills Of Service" Width="*" Binding="{Binding Skills}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBlock Style="{StaticResource FontBase}" Text="Current Page/Total Page" FontStyle="Italic" ></TextBlock>
+            <Button Style="{StaticResource BtnBase}" Content="First" Width="90"></Button>
+            <Button Style="{StaticResource BtnBase}" Content="Previous" Width="90"></Button>
+            <Button Style="{StaticResource BtnBase}" Content="Next" Width="90"></Button>
+            <Button Style="{StaticResource BtnBase}" Content="Last" Width="90"></Button>
+            <TextBlock Text="Go to Page" Style="{StaticResource FontBase}"></TextBlock>
+            <TextBox Width="40" TextAlignment="Center" Text="1"></TextBox>
+            <Button Style="{StaticResource BtnBase}" Content="Go" Width="50"></Button>
+        </StackPanel>
+    </Grid>
+</Page>

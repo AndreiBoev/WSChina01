@@ -1,0 +1,41 @@
+﻿<Page x:Class="MarathonChinaApp.Pages.PageHistoryOfWorldSkills"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MarathonChinaApp.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="History Of WorldSkills" Tag="Unauth">
+
+    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+        <TextBlock Style="{StaticResource FontHeader}" Text="History of WorldSkills" HorizontalAlignment="Center" FontSize="30"></TextBlock>
+        <StackPanel Orientation="Horizontal">
+            <Border Style="{StaticResource BorBase}">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Border BorderThickness="2" BorderBrush="Green" Margin="5" Name="BorderWS" MouseDown="BorderWS_MouseDown">
+                            <Image Source="/MarathonChinaApp;component/Assets/Logo.png" Height="80" Margin="0"></Image>
+                        </Border>
+                        <Border BorderThickness="2" Margin="5" Name="BorderFrancisco" MouseDown="BorderFrancisco_MouseDown">
+                            <Image Source="/MarathonChinaApp;component/Assets/HistoryImage/Francisco Albert Vidal.jpg" Height="80" Margin="0"></Image>
+                        </Border>
+                    </StackPanel>
+                    <Border BorderThickness="2" Margin="5" Name="BorderConpetition" MouseDown="BorderConpetition_MouseDown" Width="100">
+                        <Image Source="/MarathonChinaApp;component/Assets/HistoryImage/TheFirstCompetition.jpg" Height="80" Margin="0" Stretch="Fill"/>
+                    </Border>
+                    <Border BorderThickness="2" Margin="5" Name="BorderDirectors" MouseDown="BorderDirectors_MouseDown">
+                        <Image Source="/MarathonChinaApp;component/Assets/HistoryImage/CurrentDirectors.png" Height="130" Margin="0" Stretch="Fill"/>
+                    </Border>
+                </StackPanel>
+            </Border>
+            <StackPanel>
+                <Border Style="{StaticResource BorBase}" Height="340">
+                    <ScrollViewer VerticalScrollBarVisibility="Hidden">
+                        <TextBlock Style="{StaticResource FontBase}" Width="400" Name="TBDescription" TextWrapping="Wrap" FontSize="25"></TextBlock>
+                    </ScrollViewer>
+                </Border>
+            </StackPanel>
+        </StackPanel>
+    </StackPanel>
+</Page>

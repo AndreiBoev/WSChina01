@@ -1,0 +1,67 @@
+﻿<Page x:Class="MarathonChinaApp.Pages.CompetitorPage.PageResult"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MarathonChinaApp.Pages.CompetitorPage"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="My Result">
+
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <TextBlock Style="{StaticResource FontHeader}" Text="My Results"></TextBlock>
+        <StackPanel Orientation="Horizontal">
+            <Border Style="{StaticResource BorBase}" Width="300" Margin="0 0 40 0">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0 5 0 20">
+                        <TextBlock Style="{StaticResource FontBase}" Text="Name: " FontSize="16" Width="120" TextAlignment="Right"></TextBlock>
+                        <TextBlock Style="{StaticResource FontBase}" Name="TBName" FontSize="16"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0 0 0 20">
+                        <TextBlock Style="{StaticResource FontBase}" Text="Gender: " FontSize="16" Width="120" TextAlignment="Right"></TextBlock>
+                        <TextBlock Style="{StaticResource FontBase}" Name="TBGender" FontSize="16"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0 0 0 20">
+                        <TextBlock Style="{StaticResource FontBase}" Text="IdNumber: " FontSize="16" Width="120" TextAlignment="Right"></TextBlock>
+                        <TextBlock Style="{StaticResource FontBase}" Name="TBNumber" FontSize="16"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0 0 0 20">
+                        <TextBlock Style="{StaticResource FontBase}" Text="Province: " FontSize="16" Width="120" TextAlignment="Right"></TextBlock>
+                        <TextBlock Style="{StaticResource FontBase}" Name="TBProvince" FontSize="16"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0 0 0 20">
+                        <TextBlock Style="{StaticResource FontBase}" Text="Organization: " FontSize="16" Width="120" TextAlignment="Right"></TextBlock>
+                        <TextBlock Style="{StaticResource FontBase}" Name="TBOrganization" FontSize="16"></TextBlock>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+            <Border Style="{StaticResource BorBase}" Width="400">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+                        <TextBlock Style="{StaticResource FontBase}" Text="Event: " FontSize="16" Width="120" TextAlignment="Right"></TextBlock>
+                        <TextBlock Style="{StaticResource FontBase}" Name="TBEvent" FontSize="16" TextWrapping="Wrap" Width="200"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+                        <TextBlock Style="{StaticResource FontBase}" Text="Skills: " FontSize="16" Width="120" TextAlignment="Right"></TextBlock>
+                        <TextBlock Style="{StaticResource FontBase}" Name="TBSkills" FontSize="16" Width="200"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+                        <TextBlock Style="{StaticResource FontBase}" Text="Competitor Number: " TextWrapping="Wrap" FontSize="16" Width="120" TextAlignment="Right"></TextBlock>
+                        <TextBlock Style="{StaticResource FontBase}" Name="TBCompNum" FontSize="16" Width="200"></TextBlock>
+                    </StackPanel>
+                    <ListView Name="LVScore" Focusable="False">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Style="{StaticResource FontBase}" FontSize="16" Width="120" Text="{Binding ModuleOfCompetition.Module.Name}"></TextBlock>
+                                    <TextBlock Style="{StaticResource FontBase}" FontSize="16" Width="120" Text="{Binding Quantity}"></TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <TextBlock Style="{StaticResource FontHeader}" FontSize="30" HorizontalAlignment="Center" Text="{Binding SumScore}" Name="TBCount"></TextBlock>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </StackPanel>
+</Page>

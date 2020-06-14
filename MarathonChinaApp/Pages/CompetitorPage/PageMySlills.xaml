@@ -1,0 +1,108 @@
+﻿<Page x:Class="MarathonChinaApp.Pages.CompetitorPage.PageMySlills"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MarathonChinaApp.Pages.CompetitorPage"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="My Slills">
+
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <TextBlock Style="{StaticResource FontHeader}" Text="My Skills"></TextBlock>
+        <TextBlock Style="{StaticResource FontBase}" Name="TBCompetitor" HorizontalAlignment="Center" FontSize="15"></TextBlock>
+        <TabControl Style="{StaticResource TabConBase}">
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock Style="{StaticResource FontBase}" Text="Competitors" FontSize="16"></TextBlock>
+                </TabItem.Header>
+                <ListView Name="LViewCompetitors" Focusable="False" HorizontalContentAlignment="Center">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Columns="3"></UniformGrid>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Width="150" HorizontalAlignment="Center">
+                                <Image Source="{Binding User.Photo, TargetNullValue=/MarathonChinaApp;component/Assets/Avatar.jpg}" HorizontalAlignment="Center" Height="100" ></Image>
+                                <TextBlock Text="{Binding User.FullNameAndCountry}" Style="{StaticResource FontBase}" HorizontalAlignment="Center" Width="300" TextAlignment="Center"></TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock Style="{StaticResource FontBase}" Text="Judgers" FontSize="16"></TextBlock>
+                </TabItem.Header>
+                <ListView Name="LViewJudgers" Focusable="False" HorizontalContentAlignment="Center">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Columns="3"></UniformGrid>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Width="150" HorizontalAlignment="Center">
+                                <Image Source="{Binding User.Photo, TargetNullValue=/MarathonChinaApp;component/Assets/Avatar.jpg}" HorizontalAlignment="Center" Height="100" ></Image>
+                                <TextBlock Text="{Binding User.FullNameAndCountry}" Style="{StaticResource FontBase}" HorizontalAlignment="Center" Width="300" TextAlignment="Center"></TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock Style="{StaticResource FontBase}" Text="Workshop layout" FontSize="16"></TextBlock>
+                </TabItem.Header>
+                <ListView Name="LViewPlan" Focusable="False" HorizontalContentAlignment="Center">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Columns="3"></UniformGrid>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Photo, TargetNullValue=/MarathonChinaApp;component/Assets/Avatar.jpg}" HorizontalAlignment="Center" Height="100"></Image>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock Style="{StaticResource FontBase}" Text="Infrastructure" FontSize="16"></TextBlock>
+                </TabItem.Header>
+                <ListView Name="LViewInfrastructure" Focusable="False" HorizontalContentAlignment="Center">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Columns="2"></UniformGrid>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <Image Source="{Binding Photo, TargetNullValue=/MarathonChinaApp;component/Assets/Avatar.jpg}" HorizontalAlignment="Center" Height="100"></Image>
+                                <TextBlock Text="{Binding Name}" Style="{StaticResource FontBase}" HorizontalAlignment="Center" Width="300" TextAlignment="Center"></TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock Style="{StaticResource FontBase}" Text="Shedule" FontSize="16"></TextBlock>
+                </TabItem.Header>
+                <ListView Name="LViewShedule" Focusable="False" HorizontalContentAlignment="Center">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding SheduleWorkCompetititon}" FontSize="20" Style="{StaticResource FontBase}"></TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </TabItem>
+        </TabControl>
+    </StackPanel>
+</Page>
