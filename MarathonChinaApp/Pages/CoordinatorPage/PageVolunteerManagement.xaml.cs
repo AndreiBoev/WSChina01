@@ -29,7 +29,7 @@ namespace MarathonChinaApp.Pages.CoordinatorPage
             var currentSkills = AppData.Context.CompetitionOfChampionships.ToList();
             //currentSkills.Insert(0, new CompetitionOfChampionship
             //{
-            //    // я хз, как это делать 
+            //    я хз, как это делать 
             //});
             CBSkills.ItemsSource = currentSkills.ToList();
             CBSkills.SelectedIndex = 0;
