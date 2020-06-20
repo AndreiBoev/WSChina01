@@ -25,7 +25,15 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Width="150" HorizontalAlignment="Center">
-                                <Image Source="{Binding User.Photo, TargetNullValue=/MarathonChinaApp;component/Assets/Avatar.jpg}" HorizontalAlignment="Center" Height="100" ></Image>
+                                <Image HorizontalAlignment="Center" Height="100" >
+                                    <Image.Source>
+                                        <Binding Path="User.Photo">
+                                            <Binding.TargetNullValue>
+                                                <ImageSource>/MarathonChinaApp;component/Assets/Avatar.jpg</ImageSource>
+                                            </Binding.TargetNullValue>
+                                        </Binding>
+                                    </Image.Source>
+                                </Image>
                                 <TextBlock Text="{Binding User.FullNameAndCountry}" Style="{StaticResource FontBase}" HorizontalAlignment="Center" Width="300" TextAlignment="Center"></TextBlock>
                             </StackPanel>
                         </DataTemplate>

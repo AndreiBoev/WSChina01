@@ -9,6 +9,19 @@ namespace MarathonChinaApp.Entities
 {
     public partial class CompetitionOfChampionship
     {
-        public string CodeAndNameCompetition => Competition.Id + " - " + Competition.Name; 
+        public string CodeAndNameCompetition => (CompetitionId == 0) ? Competition.Name : Competition.Id + " - " + Competition.Name;
+        //{
+        //    get
+        //    {
+        //        if (CompetitionId == 0)
+        //        {
+        //            return Competition.Name;
+        //        }
+        //        else
+        //        {
+        //            return Competition.Id + " - " + Competition.Name;
+        //        }
+        //    }
     }
+    
 }

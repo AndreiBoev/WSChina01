@@ -24,7 +24,14 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="5">
                         <TextBlock Style="{StaticResource FontBase}" Width="120" TextAlignment="Right" Text="Sort By:"></TextBlock>
-                        <ComboBox Width="120" Name="CBIdNumber"></ComboBox>
+                        <ComboBox Width="120" Name="CBSort">
+                            <ComboBoxItem Content="IdNumber"></ComboBoxItem>
+                            <ComboBoxItem Content="Name"></ComboBoxItem>
+                            <ComboBoxItem Content="Gender"></ComboBoxItem>
+                            <ComboBoxItem Content="Occupation"></ComboBoxItem>
+                            <ComboBoxItem Content="Province"></ComboBoxItem>
+                            <ComboBoxItem Content="Skills Of Service"></ComboBoxItem>
+                        </ComboBox>
                     </StackPanel>
                     <Button Style="{StaticResource BtnBase}" Width="100" Content="Search" HorizontalAlignment="Right" Name="BtnSearch" Click="BtnSearch_Click"></Button>
                 </StackPanel>
@@ -48,6 +55,7 @@
                 <DataGridTextColumn Header="Skills Of Service" Width="*" Binding="{Binding Skills}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
+        <TextBlock Grid.Row="1" Text="Поиск не дал результатов" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed" Name="TBResult"></TextBlock>
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
             <TextBlock Style="{StaticResource FontBase}" Text="Current Page/Total Page" FontStyle="Italic" ></TextBlock>
             <Button Style="{StaticResource BtnBase}" Content="First" Width="90"></Button>
