@@ -145,6 +145,37 @@
           <Property Name="Quantity" Type="float" Nullable="false" />
           <Property Name="ModuleOfCompetitionId" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Sponsor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SponsorClass">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Photo" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="SponsorOfSponsorship">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SponsorshipId" Type="int" Nullable="false" />
+          <Property Name="SponsorId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sponsorship">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Amount" Type="float" Nullable="false" />
+          <Property Name="SponsorClassId" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -377,6 +408,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_SponsorOfSponsorship_Sponsor">
+          <End Role="Sponsor" Type="Self.Sponsor" Multiplicity="1" />
+          <End Role="SponsorOfSponsorship" Type="Self.SponsorOfSponsorship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sponsor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SponsorOfSponsorship">
+              <PropertyRef Name="SponsorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SponsorOfSponsorship_Sponsorship">
+          <End Role="Sponsorship" Type="Self.Sponsorship" Multiplicity="1" />
+          <End Role="SponsorOfSponsorship" Type="Self.SponsorOfSponsorship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sponsorship">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SponsorOfSponsorship">
+              <PropertyRef Name="SponsorshipId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sponsorship_SponsorClass">
+          <End Role="SponsorClass" Type="Self.SponsorClass" Multiplicity="1" />
+          <End Role="Sponsorship" Type="Self.Sponsorship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SponsorClass">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sponsorship">
+              <PropertyRef Name="SponsorClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_User_City">
           <End Role="City" Type="Self.City" Multiplicity="0..1" />
           <End Role="User" Type="Self.User" Multiplicity="*" />
@@ -479,6 +546,10 @@
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ScheduleCompetition" EntityType="Self.ScheduleCompetition" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Score" EntityType="Self.Score" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sponsor" EntityType="Self.Sponsor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SponsorClass" EntityType="Self.SponsorClass" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SponsorOfSponsorship" EntityType="Self.SponsorOfSponsorship" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sponsorship" EntityType="Self.Sponsorship" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Volunteer" EntityType="Self.Volunteer" Schema="dbo" store:Type="Tables" />
@@ -546,6 +617,18 @@
             <End Role="Registration" EntitySet="Registration" />
             <End Role="Score" EntitySet="Score" />
           </AssociationSet>
+          <AssociationSet Name="FK_SponsorOfSponsorship_Sponsor" Association="Self.FK_SponsorOfSponsorship_Sponsor">
+            <End Role="Sponsor" EntitySet="Sponsor" />
+            <End Role="SponsorOfSponsorship" EntitySet="SponsorOfSponsorship" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SponsorOfSponsorship_Sponsorship" Association="Self.FK_SponsorOfSponsorship_Sponsorship">
+            <End Role="Sponsorship" EntitySet="Sponsorship" />
+            <End Role="SponsorOfSponsorship" EntitySet="SponsorOfSponsorship" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sponsorship_SponsorClass" Association="Self.FK_Sponsorship_SponsorClass">
+            <End Role="SponsorClass" EntitySet="SponsorClass" />
+            <End Role="Sponsorship" EntitySet="Sponsorship" />
+          </AssociationSet>
           <AssociationSet Name="FK_User_City" Association="Self.FK_User_City">
             <End Role="City" EntitySet="City" />
             <End Role="User" EntitySet="User" />
@@ -597,6 +680,10 @@
           <EntitySet Name="Roles" EntityType="WSChina2020BaseComp01Model.Role" />
           <EntitySet Name="ScheduleCompetitions" EntityType="WSChina2020BaseComp01Model.ScheduleCompetition" />
           <EntitySet Name="Scores" EntityType="WSChina2020BaseComp01Model.Score" />
+          <EntitySet Name="Sponsors" EntityType="WSChina2020BaseComp01Model.Sponsor" />
+          <EntitySet Name="SponsorClasses" EntityType="WSChina2020BaseComp01Model.SponsorClass" />
+          <EntitySet Name="SponsorOfSponsorships" EntityType="WSChina2020BaseComp01Model.SponsorOfSponsorship" />
+          <EntitySet Name="Sponsorships" EntityType="WSChina2020BaseComp01Model.Sponsorship" />
           <EntitySet Name="sysdiagrams" EntityType="WSChina2020BaseComp01Model.sysdiagram" />
           <EntitySet Name="Users" EntityType="WSChina2020BaseComp01Model.User" />
           <EntitySet Name="Volunteers" EntityType="WSChina2020BaseComp01Model.Volunteer" />
@@ -691,6 +778,18 @@
           <AssociationSet Name="FK_User_Role" Association="WSChina2020BaseComp01Model.FK_User_Role">
             <End Role="Role" EntitySet="Roles" />
             <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SponsorOfSponsorship_Sponsor" Association="WSChina2020BaseComp01Model.FK_SponsorOfSponsorship_Sponsor">
+            <End Role="Sponsor" EntitySet="Sponsors" />
+            <End Role="SponsorOfSponsorship" EntitySet="SponsorOfSponsorships" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sponsorship_SponsorClass" Association="WSChina2020BaseComp01Model.FK_Sponsorship_SponsorClass">
+            <End Role="SponsorClass" EntitySet="SponsorClasses" />
+            <End Role="Sponsorship" EntitySet="Sponsorships" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SponsorOfSponsorship_Sponsorship" Association="WSChina2020BaseComp01Model.FK_SponsorOfSponsorship_Sponsorship">
+            <End Role="Sponsorship" EntitySet="Sponsorships" />
+            <End Role="SponsorOfSponsorship" EntitySet="SponsorOfSponsorships" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="BlockSkill">
@@ -870,6 +969,43 @@
           <Property Name="ModuleOfCompetitionId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="ModuleOfCompetition" Relationship="WSChina2020BaseComp01Model.FK_Score_ModuleOfCompetition" FromRole="Score" ToRole="ModuleOfCompetition" />
           <NavigationProperty Name="Registration" Relationship="WSChina2020BaseComp01Model.FK_Score_RegistrationEvent" FromRole="Score" ToRole="Registration" />
+        </EntityType>
+        <EntityType Name="Sponsor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SponsorOfSponsorships" Relationship="WSChina2020BaseComp01Model.FK_SponsorOfSponsorship_Sponsor" FromRole="Sponsor" ToRole="SponsorOfSponsorship" />
+        </EntityType>
+        <EntityType Name="SponsorClass">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Sponsorships" Relationship="WSChina2020BaseComp01Model.FK_Sponsorship_SponsorClass" FromRole="SponsorClass" ToRole="Sponsorship" />
+        </EntityType>
+        <EntityType Name="SponsorOfSponsorship">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SponsorshipId" Type="Int32" Nullable="false" />
+          <Property Name="SponsorId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Sponsor" Relationship="WSChina2020BaseComp01Model.FK_SponsorOfSponsorship_Sponsor" FromRole="SponsorOfSponsorship" ToRole="Sponsor" />
+          <NavigationProperty Name="Sponsorship" Relationship="WSChina2020BaseComp01Model.FK_SponsorOfSponsorship_Sponsorship" FromRole="SponsorOfSponsorship" ToRole="Sponsorship" />
+        </EntityType>
+        <EntityType Name="Sponsorship">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Amount" Type="Double" Nullable="false" />
+          <Property Name="SponsorClassId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="SponsorClass" Relationship="WSChina2020BaseComp01Model.FK_Sponsorship_SponsorClass" FromRole="Sponsorship" ToRole="SponsorClass" />
+          <NavigationProperty Name="SponsorOfSponsorships" Relationship="WSChina2020BaseComp01Model.FK_SponsorOfSponsorship_Sponsorship" FromRole="Sponsorship" ToRole="SponsorOfSponsorship" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -1195,6 +1331,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_SponsorOfSponsorship_Sponsor">
+          <End Type="WSChina2020BaseComp01Model.Sponsor" Role="Sponsor" Multiplicity="1" />
+          <End Type="WSChina2020BaseComp01Model.SponsorOfSponsorship" Role="SponsorOfSponsorship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sponsor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SponsorOfSponsorship">
+              <PropertyRef Name="SponsorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sponsorship_SponsorClass">
+          <End Type="WSChina2020BaseComp01Model.SponsorClass" Role="SponsorClass" Multiplicity="1" />
+          <End Type="WSChina2020BaseComp01Model.Sponsorship" Role="Sponsorship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SponsorClass">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sponsorship">
+              <PropertyRef Name="SponsorClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SponsorOfSponsorship_Sponsorship">
+          <End Type="WSChina2020BaseComp01Model.Sponsorship" Role="Sponsorship" Multiplicity="1" />
+          <End Type="WSChina2020BaseComp01Model.SponsorOfSponsorship" Role="SponsorOfSponsorship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sponsorship">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SponsorOfSponsorship">
+              <PropertyRef Name="SponsorshipId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1354,6 +1526,41 @@
                 <ScalarProperty Name="ModuleOfCompetitionId" ColumnName="ModuleOfCompetitionId" />
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
                 <ScalarProperty Name="RegistrationId" ColumnName="RegistrationId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sponsors">
+            <EntityTypeMapping TypeName="WSChina2020BaseComp01Model.Sponsor">
+              <MappingFragment StoreEntitySet="Sponsor">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SponsorClasses">
+            <EntityTypeMapping TypeName="WSChina2020BaseComp01Model.SponsorClass">
+              <MappingFragment StoreEntitySet="SponsorClass">
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SponsorOfSponsorships">
+            <EntityTypeMapping TypeName="WSChina2020BaseComp01Model.SponsorOfSponsorship">
+              <MappingFragment StoreEntitySet="SponsorOfSponsorship">
+                <ScalarProperty Name="SponsorId" ColumnName="SponsorId" />
+                <ScalarProperty Name="SponsorshipId" ColumnName="SponsorshipId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sponsorships">
+            <EntityTypeMapping TypeName="WSChina2020BaseComp01Model.Sponsorship">
+              <MappingFragment StoreEntitySet="Sponsorship">
+                <ScalarProperty Name="SponsorClassId" ColumnName="SponsorClassId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

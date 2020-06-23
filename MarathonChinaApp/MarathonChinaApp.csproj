@@ -128,9 +128,11 @@
     <Compile Include="Entities\PartialCityAndCountry.cs" />
     <Compile Include="Entities\PartialCompetitions.cs" />
     <Compile Include="Entities\PartialCompetitors.cs" />
+    <Compile Include="Entities\PartialEvent.cs" />
     <Compile Include="Entities\PartialGreeting.cs" />
     <Compile Include="Entities\PartialScore.cs" />
     <Compile Include="Entities\PartialShedule.cs" />
+    <Compile Include="Entities\PartialSponsor.cs" />
     <Compile Include="Entities\PartialVolunteer.cs" />
     <Compile Include="Entities\PhotoCompetition.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -148,6 +150,18 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Score.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Sponsor.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SponsorClass.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SponsorOfSponsorship.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Sponsorship.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\sysdiagram.cs">
@@ -192,6 +206,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\CoordinatorPage\PageMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\CoordinatorPage\PageSponsorshipManagement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\CoordinatorPage\PageSponsorshipStatistics.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -260,6 +282,12 @@
     </Compile>
     <Compile Include="Pages\CoordinatorPage\PageMenu.xaml.cs">
       <DependentUpon>PageMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CoordinatorPage\PageSponsorshipManagement.xaml.cs">
+      <DependentUpon>PageSponsorshipManagement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CoordinatorPage\PageSponsorshipStatistics.xaml.cs">
+      <DependentUpon>PageSponsorshipStatistics.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\CoordinatorPage\PageVolunteerManagement.xaml.cs">
       <DependentUpon>PageVolunteerManagement.xaml</DependentUpon>

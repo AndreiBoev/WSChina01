@@ -5,26 +5,30 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="291e40efe2ef4808b00df569802e7386" Name="Diagram1">
-        <EntityTypeShape EntityType="WSChina2020BaseComp01Model.BlockSkill" Width="1.5" PointX="3" PointY="5.625" />
-        <EntityTypeShape EntityType="WSChina2020BaseComp01Model.Championship" Width="1.5" PointX="5.25" PointY="9.25" />
-        <EntityTypeShape EntityType="WSChina2020BaseComp01Model.City" Width="1.5" PointX="3" PointY="10.375" />
-        <EntityTypeShape EntityType="WSChina2020BaseComp01Model.Competition" Width="1.5" PointX="5.25" PointY="5.125" />
-        <EntityTypeShape EntityType="WSChina2020BaseComp01Model.CompetitionOfChampionship" Width="1.5" PointX="7.5" PointY="9.25" />
-        <EntityTypeShape EntityType="WSChina2020BaseComp01Model.Country" Width="1.5" PointX="0.75" PointY="11" />
-        <EntityTypeShape EntityType="WSChina2020BaseComp01Model.Event" Width="1.5" PointX="7.5" PointY="12.875" />
-        <EntityTypeShape EntityType="WSChina2020BaseComp01Model.Gender" Width="1.5" PointX="8" PointY="16.125" />
-        <EntityTypeShape EntityType="WSChina2020BaseComp01Model.InfrastructureList" Width="1.5" PointX="7.5" PointY="0.75" />
-        <EntityTypeShape EntityType="WSChina2020BaseComp01Model.Module" Width="1.5" PointX="7.5" PointY="6.625" />
-        <EntityTypeShape EntityType="WSChina2020BaseComp01Model.ModuleOfCompetition" Width="1.5" PointX="9.75" PointY="6.375" />
-        <EntityTypeShape EntityType="WSChina2020BaseComp01Model.PhotoCompetition" Width="1.5" PointX="7.5" PointY="19.5" />
-        <EntityTypeShape EntityType="WSChina2020BaseComp01Model.PreviousCompetition" Width="1.5" PointX="5.25" PointY="12.375" />
-        <EntityTypeShape EntityType="WSChina2020BaseComp01Model.Registration" Width="1.5" PointX="15.5" PointY="10.5" />
-        <EntityTypeShape EntityType="WSChina2020BaseComp01Model.Role" Width="1.5" PointX="8" PointY="3.75" />
-        <EntityTypeShape EntityType="WSChina2020BaseComp01Model.ScheduleCompetition" Width="1.5" PointX="7.5" PointY="22" />
-        <EntityTypeShape EntityType="WSChina2020BaseComp01Model.Score" Width="1.5" PointX="17.75" PointY="8.5" />
-        <EntityTypeShape EntityType="WSChina2020BaseComp01Model.sysdiagram" Width="1.5" PointX="0.75" PointY="1.125" />
-        <EntityTypeShape EntityType="WSChina2020BaseComp01Model.User" Width="1.5" PointX="10.25" PointY="9.75" />
-        <EntityTypeShape EntityType="WSChina2020BaseComp01Model.Volunteer" Width="1.5" PointX="12.75" PointY="9.625" />
+        <EntityTypeShape EntityType="WSChina2020BaseComp01Model.BlockSkill" Width="1.5" PointX="3" PointY="21" />
+        <EntityTypeShape EntityType="WSChina2020BaseComp01Model.Championship" Width="1.5" PointX="5.25" PointY="16.625" />
+        <EntityTypeShape EntityType="WSChina2020BaseComp01Model.City" Width="1.5" PointX="3" PointY="10" />
+        <EntityTypeShape EntityType="WSChina2020BaseComp01Model.Competition" Width="1.5" PointX="5.25" PointY="20.5" />
+        <EntityTypeShape EntityType="WSChina2020BaseComp01Model.CompetitionOfChampionship" Width="1.5" PointX="7.5" PointY="16.5" />
+        <EntityTypeShape EntityType="WSChina2020BaseComp01Model.Country" Width="1.5" PointX="0.75" PointY="10.5" />
+        <EntityTypeShape EntityType="WSChina2020BaseComp01Model.Event" Width="1.5" PointX="7.5" PointY="20.25" />
+        <EntityTypeShape EntityType="WSChina2020BaseComp01Model.Gender" Width="1.5" PointX="6" PointY="11.75" />
+        <EntityTypeShape EntityType="WSChina2020BaseComp01Model.InfrastructureList" Width="1.5" PointX="7.5" PointY="29" />
+        <EntityTypeShape EntityType="WSChina2020BaseComp01Model.Module" Width="1.5" PointX="7.5" PointY="23" />
+        <EntityTypeShape EntityType="WSChina2020BaseComp01Model.ModuleOfCompetition" Width="1.5" PointX="9.75" PointY="16.75" />
+        <EntityTypeShape EntityType="WSChina2020BaseComp01Model.PhotoCompetition" Width="1.5" PointX="7.5" PointY="31.75" />
+        <EntityTypeShape EntityType="WSChina2020BaseComp01Model.PreviousCompetition" Width="1.5" PointX="5.25" PointY="8.875" />
+        <EntityTypeShape EntityType="WSChina2020BaseComp01Model.Registration" Width="1.5" PointX="12.5" PointY="16.125" />
+        <EntityTypeShape EntityType="WSChina2020BaseComp01Model.Role" Width="1.5" PointX="6" PointY="6.375" />
+        <EntityTypeShape EntityType="WSChina2020BaseComp01Model.ScheduleCompetition" Width="1.5" PointX="7.5" PointY="26.125" />
+        <EntityTypeShape EntityType="WSChina2020BaseComp01Model.Score" Width="1.5" PointX="14.75" PointY="16.375" />
+        <EntityTypeShape EntityType="WSChina2020BaseComp01Model.Sponsor" Width="1.5" PointX="3" PointY="4.125" />
+        <EntityTypeShape EntityType="WSChina2020BaseComp01Model.SponsorClass" Width="1.5" PointX="0.75" PointY="1" />
+        <EntityTypeShape EntityType="WSChina2020BaseComp01Model.SponsorOfSponsorship" Width="1.5" PointX="5.25" PointY="0.875" />
+        <EntityTypeShape EntityType="WSChina2020BaseComp01Model.Sponsorship" Width="1.5" PointX="3" PointY="0.875" />
+        <EntityTypeShape EntityType="WSChina2020BaseComp01Model.sysdiagram" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="WSChina2020BaseComp01Model.User" Width="1.5" PointX="8.25" PointY="9.25" />
+        <EntityTypeShape EntityType="WSChina2020BaseComp01Model.Volunteer" Width="1.5" PointX="10.75" PointY="12" />
         <AssociationConnector Association="WSChina2020BaseComp01Model.FK_Competition_BlockSkills" />
         <AssociationConnector Association="WSChina2020BaseComp01Model.FK_CompetitionOfChampionship_Championship" />
         <AssociationConnector Association="WSChina2020BaseComp01Model.FK_Event_Marathon" />
@@ -48,6 +52,9 @@
         <AssociationConnector Association="WSChina2020BaseComp01Model.FK_RegistrationEvent_User" />
         <AssociationConnector Association="WSChina2020BaseComp01Model.FK_Score_RegistrationEvent" />
         <AssociationConnector Association="WSChina2020BaseComp01Model.FK_User_Role" />
+        <AssociationConnector Association="WSChina2020BaseComp01Model.FK_SponsorOfSponsorship_Sponsor" />
+        <AssociationConnector Association="WSChina2020BaseComp01Model.FK_Sponsorship_SponsorClass" />
+        <AssociationConnector Association="WSChina2020BaseComp01Model.FK_SponsorOfSponsorship_Sponsorship" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

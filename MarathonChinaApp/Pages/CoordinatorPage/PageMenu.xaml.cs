@@ -30,5 +30,15 @@ namespace MarathonChinaApp.Pages.CoordinatorPage
         {
             NavigationService.Navigate(new PageVolunteerManagement());
         }
+
+        private void BtnSponsorship_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new PageSponsorshipManagement());
+        }
+
+        private void BtnCompetitionSer_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

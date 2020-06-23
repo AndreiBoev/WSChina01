@@ -1,0 +1,48 @@
+﻿<Page x:Class="MarathonChinaApp.Pages.CoordinatorPage.PageSponsorshipStatistics"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MarathonChinaApp.Pages.CoordinatorPage"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Sponsorship Statistics">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" HorizontalAlignment="Center">
+            <TextBlock Text="Sponsorship Statistics" Style="{StaticResource FontHeader}"></TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Event:" Style="{StaticResource FontBase}"></TextBlock>
+                <ComboBox Width="200" Height="25" Name="CBEvent" DisplayMemberPath="FullNameEvent"></ComboBox>
+                <TextBlock Text="Class by:" Style="{StaticResource FontBase}"></TextBlock>
+                <ComboBox Width="200" Name="CBSort" Height="25">
+                    <ComboBoxItem Content="SponsorClassName"></ComboBoxItem>
+                    <ComboBoxItem Content="Sponsor"></ComboBoxItem>
+                </ComboBox>
+                <Button Content="Statistics" Style="{StaticResource BtnBase}" Width="120" Name="BtnStatistics" Click="BtnStatistics_Click"></Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 20 0 0">
+                <TextBlock Style="{StaticResource FontBase}" Text="Total Amount(¥):" FontWeight="Bold"></TextBlock>
+                <TextBlock Style="{StaticResource FontBase}" Text="XX" Name="TBCount" FontWeight="Bold"></TextBlock>
+            </StackPanel>
+        </StackPanel>
+        <DataGrid Grid.Row="1" Name="DGSponsorship">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="Photo" Width="auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding SponsorClass.Photo}" Height="200"></Image>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="SponsorClassName" Width="*" Binding="{Binding SponsorClass.Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Sponsors" Binding="{Binding AllSponsor}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Amount" Binding="{Binding Amount}" Width="*"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

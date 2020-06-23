@@ -42,6 +42,10 @@ namespace MarathonChinaApp.Entities
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<ScheduleCompetition> ScheduleCompetitions { get; set; }
         public virtual DbSet<Score> Scores { get; set; }
+        public virtual DbSet<Sponsor> Sponsors { get; set; }
+        public virtual DbSet<SponsorClass> SponsorClasses { get; set; }
+        public virtual DbSet<SponsorOfSponsorship> SponsorOfSponsorships { get; set; }
+        public virtual DbSet<Sponsorship> Sponsorships { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Volunteer> Volunteers { get; set; }

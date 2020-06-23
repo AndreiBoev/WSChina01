@@ -21,6 +21,7 @@ namespace MarathonChinaApp.Pages.CoordinatorPage
     /// </summary>
     public partial class PageImportVolunteers : Page
     {
+            OpenFileDialog ofd = new OpenFileDialog();
         public PageImportVolunteers()
         {
             InitializeComponent();
@@ -33,16 +34,20 @@ namespace MarathonChinaApp.Pages.CoordinatorPage
 
         private void BtnImport_Click(object sender, RoutedEventArgs e)
         {
+            if (ofd.FileName == "")
+            {
+                BtnBrowse_Click(null, null);
+                return;
+            }
 
         }
 
         private void BtnBrowse_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "Image formats | *.xls";
             if (ofd.ShowDialog() == true)
             {
-                TBResult.Text = ofd.FileName;
+                TBPath.Text = ofd.FileName;
             }
         }
     }

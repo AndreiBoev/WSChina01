@@ -14,8 +14,8 @@
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                 <TextBlock Style="{StaticResource FontBase}" FontSize="20" TextAlignment="Center" Name="TBGreeting" Text="{Binding Greeting}"></TextBlock>
                 <Button Height="100" Width="300" Style="{StaticResource BtnBase}" Content="Volunteer Management" Name="BtnVolunteer" Click="BtnVolunteer_Click"></Button>
-                <Button Height="100" Width="300" Style="{StaticResource BtnBase}" Content="Sponsorship Management"></Button>
-                <Button Height="100" Width="300" Style="{StaticResource BtnBase}" Content="Competition Service"></Button>
+                <Button Height="100" Width="300" Style="{StaticResource BtnBase}" Content="Sponsorship Management" Name="BtnSponsorship" Click="BtnSponsorship_Click"></Button>
+                <Button Height="100" Width="300" Style="{StaticResource BtnBase}" Content="Competition Service" Name="BtnCompetitionSer" Click="BtnCompetitionSer_Click"></Button>
             </StackPanel>
         </Border>
     </StackPanel>
