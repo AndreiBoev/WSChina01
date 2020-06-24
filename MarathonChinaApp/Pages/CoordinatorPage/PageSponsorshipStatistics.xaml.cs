@@ -33,6 +33,7 @@ namespace MarathonChinaApp.Pages.CoordinatorPage
                 Name = "All Events"
             });
             CBEvent.ItemsSource = currentEvent;
+            TBCount.Text = AppData.Context.Sponsorships.Sum(p => p.Amount).ToString();
         }
 
         private void BtnStatistics_Click(object sender, RoutedEventArgs e)
@@ -49,7 +50,10 @@ namespace MarathonChinaApp.Pages.CoordinatorPage
                 default:
                     break;
             }
-            TBCount.Text = currentSponsorship.Sum(p => p.Amount).ToString();
+            if(CBEvent.SelectedIndex > 0)
+            {
+                currentSponsorship = currentSponsorship.Where(p => p.Championship == CBEvent.SelectedItem as Entities.Championship).ToList();
+            }
             DGSponsorship.ItemsSource = currentSponsorship;
         }
     }

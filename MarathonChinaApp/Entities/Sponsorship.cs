@@ -23,7 +23,9 @@ namespace MarathonChinaApp.Entities
         public int Id { get; set; }
         public double Amount { get; set; }
         public int SponsorClassId { get; set; }
+        public int ChampionshipId { get; set; }
     
+        public virtual Championship Championship { get; set; }
         public virtual SponsorClass SponsorClass { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SponsorOfSponsorship> SponsorOfSponsorships { get; set; }

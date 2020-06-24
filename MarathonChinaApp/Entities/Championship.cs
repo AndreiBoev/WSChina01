@@ -19,6 +19,7 @@ namespace MarathonChinaApp.Entities
         {
             this.CompetitionOfChampionships = new HashSet<CompetitionOfChampionship>();
             this.Events = new HashSet<Event>();
+            this.Sponsorships = new HashSet<Sponsorship>();
         }
     
         public int Id { get; set; }
@@ -31,5 +32,7 @@ namespace MarathonChinaApp.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Event> Events { get; set; }
         public virtual City City { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Sponsorship> Sponsorships { get; set; }
     }
 }
